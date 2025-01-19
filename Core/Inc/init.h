@@ -56,7 +56,6 @@
 #define GPIOB_BSRR_PIN14_RESET (1 << (16 + 14))     // BSRR 重置 PB14
 
 // 工具宏
-#define READ_BIT(REG, BIT) (((REG) & (BIT)) != 0)
 #define SET_BIT(REG, BIT) ((REG) |= (BIT))
 #define RESET_BIT(REG, BIT) ((REG) &= ~(BIT))
 
