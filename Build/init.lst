@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 1
+ARM GAS  C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 1
   13:Core/Src/init.c ****     GPIOB_MODER &= ~(0x03 << (0 * 2)); // 清除 MODER0[1:0]
   44              		.loc 1 13 5 view .LVU2
   45 0010 304B     		ldr	r3, .L3+4
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 2
+ARM GAS  C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s 			page 2
 
 
   46 0012 D3F80014 		ldr	r1, [r3, #1024]
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 1
   81 005e C3F80014 		str	r1, [r3, #1024]
   33:Core/Src/init.c ****     GPIOB_MODER |= GPIOB_MODE_PIN7_OUT;
   82              		.loc 1 33 5 is_stmt 1 view .LVU19
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 3
+ARM GAS  C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s 			page 3
 
 
   83              		.loc 1 33 17 is_stmt 0 view .LVU20
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 1
  115              		.loc 1 55 5 is_stmt 1 view .LVU36
  116              		.loc 1 55 18 is_stmt 0 view .LVU37
  117 00a2 24F48044 		bic	r4, r4, #16384
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 4
+ARM GAS  C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s 			page 4
 
 
  118 00a6 C3F80444 		str	r4, [r3, #1028]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 1
   70:Core/Src/init.c **** void GPIO_Ini_2(void)
   71:Core/Src/init.c **** {
  160              		.loc 1 71 1 is_stmt 1 view -0
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 5
+ARM GAS  C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s 			page 5
 
 
  161              		.cfi_startproc
@@ -249,71 +249,61 @@ ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 1
   73:Core/Src/init.c ****     // 设置 PC13 为输入模式
   74:Core/Src/init.c ****     GPIOC_MODER &= ~(0x03 << (13 * 2)); // 清除 MODER13[1:0]
  165              		.loc 1 74 5 view .LVU49
- 166 0000 0F4A     		ldr	r2, .L6
- 167 0002 D2F80038 		ldr	r3, [r2, #2048]
+ 166 0000 0A4B     		ldr	r3, .L6
+ 167 0002 D3F80028 		ldr	r2, [r3, #2048]
  168              		.loc 1 74 17 is_stmt 0 view .LVU50
- 169 0006 23F04063 		bic	r3, r3, #201326592
- 170 000a C2F80038 		str	r3, [r2, #2048]
+ 169 0006 22F04062 		bic	r2, r2, #201326592
+ 170 000a C3F80028 		str	r2, [r3, #2048]
   75:Core/Src/init.c **** 
   76:Core/Src/init.c ****     // 设置 PC6 为输入模式
   77:Core/Src/init.c ****     GPIOC_MODER &= ~(0x03 << (6 * 2)); // 清除 MODER6[1:0]
  171              		.loc 1 77 5 is_stmt 1 view .LVU51
  172              		.loc 1 77 17 is_stmt 0 view .LVU52
- 173 000e 23F44053 		bic	r3, r3, #12288
- 174 0012 C2F80038 		str	r3, [r2, #2048]
+ 173 000e 22F44052 		bic	r2, r2, #12288
+ 174 0012 C3F80028 		str	r2, [r3, #2048]
   78:Core/Src/init.c **** 
   79:Core/Src/init.c ****     // ==================== 配置 上下拉电阻 ====================
-  80:Core/Src/init.c ****     // 设置 PC13 为上拉
+  80:Core/Src/init.c ****     // 设置 PC13 为无上下拉
   81:Core/Src/init.c ****     GPIOC_PUPDR &= ~(0x03 << (13 * 2));
  175              		.loc 1 81 5 is_stmt 1 view .LVU53
- 176 0016 D2F80C38 		ldr	r3, [r2, #2060]
+ 176 0016 D3F80C28 		ldr	r2, [r3, #2060]
  177              		.loc 1 81 17 is_stmt 0 view .LVU54
- 178 001a 23F04063 		bic	r3, r3, #201326592
- 179 001e C2F80C38 		str	r3, [r2, #2060]
-  82:Core/Src/init.c ****     GPIOC_PUPDR |= (0x01 << (13 * 2)); // 上拉
+ 178 001a 22F04062 		bic	r2, r2, #201326592
+ 179 001e C3F80C28 		str	r2, [r3, #2060]
+  82:Core/Src/init.c ****     GPIOC_PUPDR |= (0x00 << (13 * 2)); // 无上下拉
  180              		.loc 1 82 5 is_stmt 1 view .LVU55
- 181              		.loc 1 82 17 is_stmt 0 view .LVU56
- 182 0022 43F08061 		orr	r1, r3, #67108864
- 183 0026 C2F80C18 		str	r1, [r2, #2060]
   83:Core/Src/init.c **** 
-  84:Core/Src/init.c ****     // 设置 PC6 为上拉
+  84:Core/Src/init.c ****     // 设置 PC6 为无上下拉
   85:Core/Src/init.c ****     GPIOC_PUPDR &= ~(0x03 << (6 * 2));
- 184              		.loc 1 85 5 is_stmt 1 view .LVU57
- 185 002a 23F44053 		bic	r3, r3, #12288
- 186              		.loc 1 85 17 is_stmt 0 view .LVU58
- 187 002e 43F08063 		orr	r3, r3, #67108864
- 188 0032 C2F80C38 		str	r3, [r2, #2060]
-  86:Core/Src/init.c ****     GPIOC_PUPDR |= (0x01 << (6 * 2)); // 上拉
- 189              		.loc 1 86 5 is_stmt 1 view .LVU59
- 190              		.loc 1 86 17 is_stmt 0 view .LVU60
- 191 0036 43F48053 		orr	r3, r3, #4096
- 192 003a C2F80C38 		str	r3, [r2, #2060]
+ 181              		.loc 1 85 5 view .LVU56
+ 182              		.loc 1 85 17 is_stmt 0 view .LVU57
+ 183 0022 22F44052 		bic	r2, r2, #12288
+ 184 0026 C3F80C28 		str	r2, [r3, #2060]
+  86:Core/Src/init.c ****     GPIOC_PUPDR |= (0x00 << (6 * 2)); // 无上下拉
+ 185              		.loc 1 86 5 is_stmt 1 view .LVU58
   87:Core/Src/init.c **** }
- 193              		.loc 1 87 1 view .LVU61
- 194 003e 7047     		bx	lr
- 195              	.L7:
- 196              		.align	2
- 197              	.L6:
- 198 0040 00000240 		.word	1073872896
- 199              		.cfi_endproc
- 200              	.LFE131:
- 202              		.text
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 6
-
-
- 203              	.Letext0:
- 204              		.file 2 "C:/SysGCC/arm-eabi/arm-none-eabi/include/machine/_default_types.h"
- 205              		.file 3 "C:/SysGCC/arm-eabi/arm-none-eabi/include/sys/_stdint.h"
-ARM GAS  C:\Users\36525\AppData\Local\Temp\cc76PdE5.s 			page 7
+ 186              		.loc 1 87 1 is_stmt 0 view .LVU59
+ 187 002a 7047     		bx	lr
+ 188              	.L7:
+ 189              		.align	2
+ 190              	.L6:
+ 191 002c 00000240 		.word	1073872896
+ 192              		.cfi_endproc
+ 193              	.LFE131:
+ 195              		.text
+ 196              	.Letext0:
+ 197              		.file 2 "C:/SysGCC/arm-eabi/arm-none-eabi/include/machine/_default_types.h"
+ 198              		.file 3 "C:/SysGCC/arm-eabi/arm-none-eabi/include/sys/_stdint.h"
+ARM GAS  C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 init.c
-C:\Users\36525\AppData\Local\Temp\cc76PdE5.s:21     .text.GPIO_Ini_1:00000000 $t
-C:\Users\36525\AppData\Local\Temp\cc76PdE5.s:27     .text.GPIO_Ini_1:00000000 GPIO_Ini_1
-C:\Users\36525\AppData\Local\Temp\cc76PdE5.s:146    .text.GPIO_Ini_1:000000d0 $d
-C:\Users\36525\AppData\Local\Temp\cc76PdE5.s:152    .text.GPIO_Ini_2:00000000 $t
-C:\Users\36525\AppData\Local\Temp\cc76PdE5.s:158    .text.GPIO_Ini_2:00000000 GPIO_Ini_2
-C:\Users\36525\AppData\Local\Temp\cc76PdE5.s:198    .text.GPIO_Ini_2:00000040 $d
+C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s:21     .text.GPIO_Ini_1:00000000 $t
+C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s:27     .text.GPIO_Ini_1:00000000 GPIO_Ini_1
+C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s:146    .text.GPIO_Ini_1:000000d0 $d
+C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s:152    .text.GPIO_Ini_2:00000000 $t
+C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s:158    .text.GPIO_Ini_2:00000000 GPIO_Ini_2
+C:\Users\36525\AppData\Local\Temp\ccgY2kpb.s:191    .text.GPIO_Ini_2:0000002c $d
 
 NO UNDEFINED SYMBOLS
