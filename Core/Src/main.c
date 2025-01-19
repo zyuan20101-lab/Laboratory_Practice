@@ -3,7 +3,8 @@
 
 // ==================== 全局变量 ====================
 uint8_t led_states[3] = {0}; // 记录每个 LED 的当前状态 (0=关闭, 1=打开) 对应 LED1 (PB0), LED2 (PB7), LED3 (PB14)
-uint8_t button1_mode = 0;    // 按钮1的功能模式 (0=开灯, 1=关灯)，初始为开灯模式
+uint8_t button1_mode = 0;    // 按钮1的功能模式 (0=开灯, 1=关灯)
+uint8_t direction = 0;       // 操作方向 (0=正向, 1=反向)
 uint8_t button1_pressed = 0;
 uint8_t button2_pressed = 0;
 
@@ -16,9 +17,16 @@ int main(void)
     // 初始化 GPIO
     GPIO_Ini_1(); // 初始化 LED 引脚
     GPIO_Ini_2(); // 初始化按钮引脚
-    
-    // 初始化 LED 状态为关闭
-    update_leds();
+
+    // 根据初始模式设置方向
+    if (button1_mode == 0)
+    {
+        direction = 0; // 开灯时为正向
+    }
+    else
+    {
+        direction = 1; // 关灯时为反向
+    }
 
     while (1)
     {
@@ -34,31 +42,37 @@ int main(void)
                 button1_pressed = 1;
 
                 uint8_t all_done = 1;
-                if (button1_mode == 0) // 开灯模式
+                if (direction == 0)
                 {
-                    // 正向操作 (0→1→2)
-                    for (int i = 0; i < 3; i++)
+                    // 正向操作
+                    for (int i = 2; i >= 0; i--)
                     {
-                        if (led_states[i] != 1) // 开灯时设置为1
+                        if (led_states[i] != button1_mode)
                         {
-                            led_states[i] = 1;
+                            led_states[i] = button1_mode;
                             all_done = 0;
                             break;
                         }
                     }
                 }
-                else // 关灯模式
+                else
                 {
-                    // 反向操作 (2→1→0)
-                    for (int i = 2; i >= 0; i--)
+                    // 反向操作
+                    for (int i = 0; i < 3; i++)
                     {
-                        if (led_states[i] != 0) // 关灯时设置为0
+                        if (led_states[i] != button1_mode)
                         {
-                            led_states[i] = 0;
+                            led_states[i] = button1_mode;
                             all_done = 0;
                             break;
                         }
                     }
+                }
+
+                if (all_done)
+                {
+                    // 所有 LED 已达到目标状态，不再切换方向
+                    // 如果需要，可以在这里添加其他逻辑
                 }
 
                 update_leds();
@@ -76,6 +90,16 @@ int main(void)
             {
                 button2_pressed = 1;
                 button1_mode = !button1_mode; // 切换模式
+
+                // 根据切换后的模式设置方向
+                if (button1_mode == 0)
+                {
+                    direction = 0; // 开灯时为正向
+                }
+                else
+                {
+                    direction = 1; // 关灯时为反向
+                }
             }
         }
         else
@@ -91,23 +115,16 @@ int main(void)
 // ==================== 更新 LED 状态函数 ====================
 void update_leds(void)
 {
-    // 先关闭所有 LED
+    // 关闭所有 LED
     GPIOB_BSRR = GPIOB_BSRR_PIN0_RESET | GPIOB_BSRR_PIN7_RESET | GPIOB_BSRR_PIN14_RESET;
-    
-    // 等待一小段时间确保LED关闭
-    delay(1000);
 
     // 根据 led_states 数组打开相应的 LED
-    uint32_t bsrr_value = 0;
     if (led_states[0])
-        bsrr_value |= GPIOB_BSRR_PIN0_SET;
+        GPIOB_BSRR = GPIOB_BSRR_PIN0_SET;
     if (led_states[1])
-        bsrr_value |= GPIOB_BSRR_PIN7_SET;
+        GPIOB_BSRR = GPIOB_BSRR_PIN7_SET;
     if (led_states[2])
-        bsrr_value |= GPIOB_BSRR_PIN14_SET;
-    
-    // 一次性设置所有LED状态
-    GPIOB_BSRR = bsrr_value;
+        GPIOB_BSRR = GPIOB_BSRR_PIN14_SET;
 }
 
 // ==================== 延时函数 ====================
