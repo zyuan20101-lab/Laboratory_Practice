@@ -3,7 +3,7 @@
 # ------------------------------------------------
 # List of supported controllers:
 #	STM32F446RE -- Target series -> STM32F446 | Target version -> RE
-# 	STM32F429ZI -- Target series -> STM32F429 | Target version -> ZI
+# 	//STM32F429ZI -- Target series -> STM32F429 | Target version -> ZI
 # 	STM32F411VE -- Target series -> STM32F411 | Target version -> VE
 #	STM32F411CE -- Target series -> STM32F411 | Target version -> CE
 #	STM32F411RE -- Target series -> STM32F411 | Target version -> RE
